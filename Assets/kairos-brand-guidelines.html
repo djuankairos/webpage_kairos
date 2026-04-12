@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kairos Automatizaciones — Brand Guidelines</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --k-green: #6FC2A8;
+    --k-green-dark: #3A8D7C;
+    --k-green-bright: #4ADE80;
+    --k-dark: #2E3236;
+    --k-gray-mid: #6B7280;
+    --k-gray-light: #E5E7EB;
+    --k-white: #F9FAFB;
+    --k-red: #EF4444;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #1C1F22;
+    color: #E5E7EB;
+    line-height: 1.7;
+  }
+
+  /* SIDEBAR NAV */
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 220px;
+    height: 100vh;
+    background: #12151700;
+    border-right: 0.5px solid #2E3236;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    backdrop-filter: blur(12px);
+    background: rgba(18,21,23,0.92);
+    z-index: 100;
+  }
+  .sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 1.5rem;
+    border-bottom: 0.5px solid #2E3236;
+  }
+  .sidebar-logo-text { font-size: 13px; font-weight: 500; color: #fff; letter-spacing: 0.06em; }
+  .sidebar-logo-sub { font-size: 9px; color: var(--k-green); letter-spacing: 0.18em; text-transform: uppercase; }
+  nav { display: flex; flex-direction: column; gap: 4px; }
+  nav a {
+    font-size: 12px;
+    color: var(--k-gray-mid);
+    text-decoration: none;
+    padding: 7px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.04em;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  nav a:hover, nav a.active { color: var(--k-green); background: rgba(111,194,168,0.08); }
+  nav a .dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+  .sidebar-version { font-size: 10px; color: #444; margin-top: auto; font-family: 'DM Mono', monospace; }
+
+  /* MAIN */
+  main { margin-left: 220px; padding: 4rem 3.5rem; max-width: 900px; }
+
+  /* HERO */
+  .hero {
+    margin-bottom: 5rem;
+    padding-bottom: 3rem;
+    border-bottom: 0.5px solid #2E3236;
+  }
+  .hero-tag {
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    color: var(--k-green);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hero-tag::before { content: ''; display: block; width: 24px; height: 0.5px; background: var(--k-green); }
+  .hero h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+  .hero h1 em { font-style: normal; color: var(--k-green); }
+  .hero p { font-size: 14px; color: var(--k-gray-mid); max-width: 480px; }
+
+  /* SECTIONS */
+  section { margin-bottom: 5rem; scroll-margin-top: 2rem; }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 0.5px solid #2E3236;
+  }
+  .section-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--k-green);
+    letter-spacing: 0.1em;
+  }
+  .section-title { font-size: 18px; font-weight: 400; color: #fff; letter-spacing: -0.01em; }
+  .sub-label {
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    color: #444;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+  }
+  .sub-label:first-of-type { margin-top: 0; }
+
+  /* COLOR SWATCHES */
+  .swatches { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .swatch {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 0.5px solid #2E3236;
+  }
+  .swatch-color { height: 72px; }
+  .swatch-info { padding: 12px; background: #1A1D20; }
+  .swatch-name { font-size: 12px; font-weight: 500; color: #E5E7EB; margin-bottom: 3px; }
+  .swatch-hex { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--k-green); margin-bottom: 4px; }
+  .swatch-use { font-size: 10px; color: var(--k-gray-mid); }
+
+  .combos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 1.5rem; }
+  .combo {
+    border-radius: 10px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .combo-title { font-size: 14px; font-weight: 500; }
+  .combo-sub { font-size: 11px; }
+  .combo-btn {
+    margin-top: 10px;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    display: inline-block;
+    width: fit-content;
+    letter-spacing: 0.04em;
+  }
+
+  /* TYPOGRAPHY */
+  .type-rows { display: flex; flex-direction: column; gap: 1px; }
+  .type-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 1.25rem 0;
+    border-bottom: 0.5px solid #2E3236;
+  }
+  .type-meta { font-family: 'DM Mono', monospace; font-size: 10px; color: #444; line-height: 1.6; }
+  .type-meta span { display: block; color: var(--k-green); }
+  .t-display { font-size: 36px; font-weight: 300; color: #fff; letter-spacing: -0.02em; line-height: 1.1; }
+  .t-h1 { font-size: 24px; font-weight: 400; color: #fff; }
+  .t-h2 { font-size: 18px; font-weight: 400; color: #E5E7EB; }
+  .t-body { font-size: 15px; font-weight: 300; color: var(--k-gray-mid); line-height: 1.7; }
+  .t-small { font-size: 13px; color: #6B7280; }
+  .t-label { font-size: 11px; font-weight: 500; color: #6B7280; letter-spacing: 0.12em; text-transform: uppercase; }
+  .t-mono { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--k-green); }
+
+  /* SPACING */
+  .spacing-rows { display: flex; flex-direction: column; gap: 10px; }
+  .spacing-row { display: flex; align-items: center; gap: 16px; }
+  .spacing-bar { background: var(--k-green); border-radius: 3px; height: 12px; flex-shrink: 0; opacity: 0.8; }
+  .spacing-info { font-size: 12px; color: #E5E7EB; }
+  .spacing-token { font-family: 'DM Mono', monospace; font-size: 10px; color: #444; }
+
+  .radius-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 1.5rem; }
+  .radius-item { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 1.25rem; background: #1A1D20; border: 0.5px solid #2E3236; border-radius: 10px; }
+  .radius-box { width: 48px; height: 48px; background: rgba(111,194,168,0.12); border: 1.5px solid var(--k-green); }
+  .radius-val { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--k-green); }
+  .radius-use { font-size: 10px; color: var(--k-gray-mid); text-align: center; }
+
+  /* ICONS */
+  .icon-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+  .icon-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .icon-box {
+    width: 48px; height: 48px;
+    background: #1A1D20;
+    border: 0.5px solid #2E3236;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .icon-box:hover { border-color: var(--k-green); background: rgba(111,194,168,0.06); }
+  .icon-label { font-size: 10px; color: var(--k-gray-mid); text-align: center; }
+  .icon-principles { margin-top: 1.5rem; background: #1A1D20; border: 0.5px solid #2E3236; border-radius: 10px; overflow: hidden; }
+  .icon-principle { padding: 10px 16px; font-size: 12px; color: var(--k-gray-mid); border-bottom: 0.5px solid #2E3236; }
+  .icon-principle:last-child { border-bottom: none; }
+
+  /* LOGO */
+  .logo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .logo-version {
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    border: 0.5px solid #2E3236;
+  }
+  .logo-mark { display: flex; align-items: center; gap: 12px; }
+  .logo-version-label { font-size: 10px; color: #444; font-family: 'DM Mono', monospace; letter-spacing: 0.06em; }
+
+  /* DO / DONT */
+  .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 1.5rem; }
+  .do-card { background: rgba(74,222,128,0.04); border: 0.5px solid rgba(74,222,128,0.2); border-radius: 10px; padding: 1.25rem; }
+  .dont-card { background: rgba(239,68,68,0.04); border: 0.5px solid rgba(239,68,68,0.2); border-radius: 10px; padding: 1.25rem; }
+  .do-label { font-size: 10px; font-weight: 500; color: #4ADE80; letter-spacing: 0.1em; margin-bottom: 12px; font-family: 'DM Mono', monospace; }
+  .dont-label { font-size: 10px; font-weight: 500; color: #EF4444; letter-spacing: 0.1em; margin-bottom: 12px; font-family: 'DM Mono', monospace; }
+  .rule { font-size: 12px; color: var(--k-gray-mid); padding: 7px 0; border-bottom: 0.5px solid rgba(255,255,255,0.04); }
+  .rule:last-child { border-bottom: none; }
+
+  /* TONE */
+  .tone-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .tone-card { background: #1A1D20; border: 0.5px solid #2E3236; border-radius: 10px; padding: 1.25rem; }
+  .tone-card-label { font-size: 10px; color: var(--k-green); font-family: 'DM Mono', monospace; letter-spacing: 0.1em; margin-bottom: 12px; }
+  .tone-item { font-size: 13px; color: #E5E7EB; padding: 8px 0; border-bottom: 0.5px solid #2E3236; }
+  .tone-item:last-child { border-bottom: none; }
+  .tone-item.muted { color: var(--k-gray-mid); text-decoration: line-through; }
+
+  .attr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 1.5rem; }
+  .attr-card { background: #1A1D20; border: 0.5px solid #2E3236; border-radius: 10px; padding: 1.25rem; }
+
+  /* CLEARANCE */
+  .clearance-demo {
+    background: #1A1D20;
+    border: 0.5px solid #2E3236;
+    border-radius: 12px;
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  .clearance-inner {
+    border: 1px dashed rgba(111,194,168,0.4);
+    border-radius: 6px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* PRINT */
+  @media print {
+    .sidebar { display: none; }
+    main { margin-left: 0; padding: 2rem; }
+    section { page-break-inside: avoid; }
+  }
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    main { margin-left: 0; padding: 2rem 1.25rem; }
+    .swatches, .combos, .logo-grid, .do-dont, .tone-grid, .attr-grid { grid-template-columns: 1fr; }
+    .icon-grid { grid-template-columns: repeat(4, 1fr); }
+    .radius-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <svg width="24" height="24" viewBox="0 0 100 100" fill="none">
+      <circle cx="50" cy="50" r="44" stroke="#6FC2A8" stroke-width="5" fill="none"/>
+      <circle cx="50" cy="50" r="28" stroke="#6FC2A8" stroke-width="3.5" fill="none"/>
+      <ellipse cx="50" cy="50" rx="44" ry="16" stroke="#6FC2A8" stroke-width="3" fill="none" transform="rotate(45 50 50)"/>
+      <ellipse cx="50" cy="50" rx="44" ry="16" stroke="#6FC2A8" stroke-width="3" fill="none" transform="rotate(-45 50 50)"/>
+      <circle cx="50" cy="6" r="5" fill="#6FC2A8"/>
+      <circle cx="50" cy="94" r="5" fill="#6FC2A8"/>
+      <circle cx="6" cy="50" r="5" fill="#6FC2A8"/>
+      <circle cx="94" cy="50" r="5" fill="#6FC2A8"/>
+    </svg>
+    <div>
+      <div class="sidebar-logo-text">KAIROS</div>
+      <div class="sidebar-logo-sub">Brand Guidelines</div>
+    </div>
+  </div>
+  <nav>
+    <a href="#colores"><span class="dot"></span>Colores</a>
+    <a href="#tipografia"><span class="dot"></span>Tipografía</a>
+    <a href="#espaciado"><span class="dot"></span>Espaciado</a>
+    <a href="#iconografia"><span class="dot"></span>Iconografía</a>
+    <a href="#logo"><span class="dot"></span>Logo</a>
+    <a href="#tono"><span class="dot"></span>Tono de marca</a>
+  </nav>
+  <div class="sidebar-version">v1.0 · 2025<br>Kairos Automatizaciones</div>
+</aside>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-tag">Brand Guidelines</div>
+    <h1>Sistema de marca<br><em>Kairos</em> Automatizaciones</h1>
+    <p>Guía completa de identidad visual para uso coherente en web, producto, ventas y comunicaciones.</p>
+  </div>
+
+  <!-- COLORES -->
+  <section id="colores">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2 class="section-title">Colores</h2>
+    </div>
+
+    <div class="sub-label">Primarios</div>
+    <div class="swatches">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#6FC2A8;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Verde Kairos</div>
+          <div class="swatch-hex">#6FC2A8</div>
+          <div class="swatch-use">Principal · CTAs · Acentos · Links</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#3A8D7C;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Verde oscuro</div>
+          <div class="swatch-hex">#3A8D7C</div>
+          <div class="swatch-use">Hover states · Variación profunda</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#2E3236;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Gris oscuro</div>
+          <div class="swatch-hex">#2E3236</div>
+          <div class="swatch-use">Fondo principal · Headers · Dark UI</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-label">Secundarios</div>
+    <div class="swatches">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#6B7280;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Gris medio</div>
+          <div class="swatch-hex">#6B7280</div>
+          <div class="swatch-use">Texto secundario · Bordes</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#E5E7EB;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Gris claro</div>
+          <div class="swatch-hex">#E5E7EB</div>
+          <div class="swatch-use">Fondos neutros · Separadores</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#F9FAFB; border: 0.5px solid #E5E7EB;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Blanco humo</div>
+          <div class="swatch-hex">#F9FAFB</div>
+          <div class="swatch-use">Fondo claro principal</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-label">Acento y semánticos</div>
+    <div class="swatches">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#4ADE80;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Verde highlight</div>
+          <div class="swatch-hex">#4ADE80</div>
+          <div class="swatch-use">Métricas positivas · ROI · Dashboards</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#EF4444;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Rojo pérdida</div>
+          <div class="swatch-hex">#EF4444</div>
+          <div class="swatch-use">No-shows · Pérdida operativa</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#FFFFFF; border: 0.5px solid #333;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Blanco puro</div>
+          <div class="swatch-hex">#FFFFFF</div>
+          <div class="swatch-use">Texto sobre fondos oscuros</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-label">Combinaciones aprobadas</div>
+    <div class="combos">
+      <div class="combo" style="background:#2E3236;">
+        <div class="combo-title" style="color:#fff;">Versión oscura</div>
+        <div class="combo-sub" style="color:#6FC2A8;">Kairos Automatizaciones</div>
+        <div style="font-size:11px;color:#6B7280;">Texto secundario sobre fondo oscuro</div>
+        <div class="combo-btn" style="background:#6FC2A8;color:#2E3236;">Ver demo</div>
+      </div>
+      <div class="combo" style="background:#F9FAFB; border: 0.5px solid #E5E7EB;">
+        <div class="combo-title" style="color:#2E3236;">Versión clara</div>
+        <div class="combo-sub" style="color:#3A8D7C;">Kairos Automatizaciones</div>
+        <div style="font-size:11px;color:#6B7280;">Texto secundario sobre fondo claro</div>
+        <div class="combo-btn" style="background:#2E3236;color:#6FC2A8;">Ver demo</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIPOGRAFÍA -->
+  <section id="tipografia">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2 class="section-title">Tipografía</h2>
+    </div>
+    <div class="sub-label">Fuente principal — DM Sans / Inter / Poppins</div>
+    <div class="type-rows">
+      <div class="type-row">
+        <div class="type-meta">display<span>36px / 300</span></div>
+        <div class="t-display">Automatización inteligente</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">h1<span>24px / 400</span></div>
+        <div class="t-h1">Reducimos no-show con impacto medible</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">h2<span>18px / 400</span></div>
+        <div class="t-h2">Optimizamos la ocupación de tu agenda</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">body<span>15px / 300</span></div>
+        <div class="t-body">Kairos convierte pérdida operativa en ingreso medible. Automatizamos confirmaciones, reprogramaciones y listas de espera para clínicas y consultorios.</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">small<span>13px / 400</span></div>
+        <div class="t-small">Texto de UI · Tablas · Labels de componentes</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">label<span>11px / 500 / UC</span></div>
+        <div class="t-label">Sección de contenido · Categoría · Metadato</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">mono<span>DM Mono / 12px</span></div>
+        <div class="t-mono">#6FC2A8 · spacing-4 · v1.0.0</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESPACIADO -->
+  <section id="espaciado">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2 class="section-title">Espaciado</h2>
+    </div>
+    <div class="sub-label">Sistema base 4px</div>
+    <div class="spacing-rows">
+      <div class="spacing-row"><div class="spacing-bar" style="width:4px;"></div><div><div class="spacing-info">4px</div><div class="spacing-token">spacing-1 · micro gap</div></div></div>
+      <div class="spacing-row"><div class="spacing-bar" style="width:8px;"></div><div><div class="spacing-info">8px</div><div class="spacing-token">spacing-2 · gap ícono + texto</div></div></div>
+      <div class="spacing-row"><div class="spacing-bar" style="width:12px;"></div><div><div class="spacing-info">12px</div><div class="spacing-token">spacing-3 · gap interno de componentes</div></div></div>
+      <div class="spacing-row"><div class="spacing-bar" style="width:16px;"></div><div><div class="spacing-info">16px</div><div class="spacing-token">spacing-4 · padding estándar de cards</div></div></div>
+      <div class="spacing-row"><div class="spacing-bar" style="width:24px;"></div><div><div class="spacing-info">24px</div><div class="spacing-token">spacing-6 · separación entre secciones pequeñas</div></div></div>
+      <div class="spacing-row"><div class="spacing-bar" style="width:32px;"></div><div><div class="spacing-info">32px</div><div class="spacing-token">spacing-8 · margen entre bloques</div></div></div>
+      <div class="spacing-row"><div class="spacing-bar" style="width:48px;"></div><div><div class="spacing-info">48px</div><div class="spacing-token">spacing-12 · separación entre secciones grandes</div></div></div>
+      <div class="spacing-row"><div class="spacing-bar" style="width:64px;"></div><div><div class="spacing-info">64px</div><div class="spacing-token">spacing-16 · padding hero</div></div></div>
+    </div>
+
+    <div class="sub-label">Border radius</div>
+    <div class="radius-grid">
+      <div class="radius-item"><div class="radius-box" style="border-radius:4px;"></div><div class="radius-val">4px</div><div class="radius-use">Inputs, tags</div></div>
+      <div class="radius-item"><div class="radius-box" style="border-radius:8px;"></div><div class="radius-val">8px</div><div class="radius-use">Botones</div></div>
+      <div class="radius-item"><div class="radius-box" style="border-radius:12px;"></div><div class="radius-val">12px</div><div class="radius-use">Cards</div></div>
+      <div class="radius-item"><div class="radius-box" style="border-radius:24px; height:28px; margin-top:10px;"></div><div class="radius-val">20px</div><div class="radius-use">Badges, pills</div></div>
+    </div>
+
+    <div class="sub-label">Zona de exclusión del logo</div>
+    <div class="clearance-demo">
+      <div class="clearance-inner">
+        <svg width="28" height="28" viewBox="0 0 100 100" fill="none">
+          <circle cx="50" cy="50" r="44" stroke="#6FC2A8" stroke-width="5" fill="none"/>
+          <circle cx="50" cy="50" r="28" stroke="#6FC2A8" stroke-width="3.5" fill="none"/>
+          <ellipse cx="50" cy="50" rx="44" ry="16" stroke="#6FC2A8" stroke-width="3" fill="none" transform="rotate(45 50 50)"/>
+          <ellipse cx="50" cy="50" rx="44" ry="16" stroke="#6FC2A8" stroke-width="3" fill="none" transform="rotate(-45 50 50)"/>
+          <circle cx="50" cy="6" r="5" fill="#6FC2A8"/><circle cx="50" cy="94" r="5" fill="#6FC2A8"/>
+          <circle cx="6" cy="50" r="5" fill="#6FC2A8"/><circle cx="94" cy="50" r="5" fill="#6FC2A8"/>
+        </svg>
+        <div>
+          <div style="font-size:16px;font-weight:500;color:#fff;letter-spacing:0.08em;">KAIROS</div>
+          <div style="font-size:9px;letter-spacing:0.2em;color:#6FC2A8;text-transform:uppercase;">Automatizaciones</div>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:#444;margin-top:10px;">El logo siempre necesita un espacio mínimo de <span style="color:#6FC2A8;">24px</span> en todos sus lados. Nunca pegado a bordes ni a otros elementos.</p>
+  </section>
+
+  <!-- ICONOGRAFÍA -->
+  <section id="iconografia">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <h2 class="section-title">Iconografía</h2>
+    </div>
+    <div class="sub-label">Set de íconos — outline, 24px, stroke 1.5px</div>
+    <div class="icon-grid">
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6FC2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div class="icon-label">Agenda</div>
+      </div>
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6FC2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="icon-label">Confirmado</div>
+      </div>
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6FC2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+        </div>
+        <div class="icon-label">Reprogramar</div>
+      </div>
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6FC2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <div class="icon-label">Métricas</div>
+      </div>
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6FC2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="icon-label">Tiempo real</div>
+      </div>
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6FC2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <div class="icon-label">ROI</div>
+      </div>
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6FC2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="icon-label">Pacientes</div>
+      </div>
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6FC2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M5.34 18.66l-1.41 1.41M21 12h-2M5 12H3M19.07 19.07l-1.41-1.41M5.34 5.34L3.93 3.93M12 21v-2M12 5V3"/></svg>
+        </div>
+        <div class="icon-label">Automatizar</div>
+      </div>
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6FC2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="icon-label">Dashboard</div>
+      </div>
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6FC2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.64 12 19.79 19.79 0 0 1 1.58 3.36C1.58 2.18 2.4 1.25 3.58 1.25H6.58a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.61 8.91a16 16 0 0 0 5.5 5.5l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 14.92z"/></svg>
+        </div>
+        <div class="icon-label">Notificación</div>
+      </div>
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6FC2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="icon-label">Actividad</div>
+      </div>
+      <div class="icon-item">
+        <div class="icon-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6FC2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="icon-label">Confianza</div>
+      </div>
+    </div>
+    <div class="icon-principles">
+      <div class="icon-principle">Estilo outline siempre — nunca filled ni duotone</div>
+      <div class="icon-principle">Stroke de 1.5px — delgado y preciso</div>
+      <div class="icon-principle">Tamaño base 20–24px · mínimo 16px</div>
+      <div class="icon-principle">Color: #6FC2A8 sobre oscuros · #2E3236 sobre claros</div>
+      <div class="icon-principle">Librería recomendada: Lucide Icons o Heroicons</div>
+    </div>
+  </section>
+
+  <!-- LOGO -->
+  <section id="logo">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <h2 class="section-title">Logo</h2>
+    </div>
+    <div class="sub-label">Versiones</div>
+    <div class="logo-grid">
+      <div class="logo-version" style="background:#2E3236;">
+        <div class="logo-mark">
+          <svg width="36" height="36" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="44" stroke="#6FC2A8" stroke-width="5" fill="none"/><circle cx="50" cy="50" r="28" stroke="#6FC2A8" stroke-width="3.5" fill="none"/><ellipse cx="50" cy="50" rx="44" ry="16" stroke="#6FC2A8" stroke-width="3" fill="none" transform="rotate(45 50 50)"/><ellipse cx="50" cy="50" rx="44" ry="16" stroke="#6FC2A8" stroke-width="3" fill="none" transform="rotate(-45 50 50)"/><circle cx="50" cy="6" r="5" fill="#6FC2A8"/><circle cx="50" cy="94" r="5" fill="#6FC2A8"/><circle cx="6" cy="50" r="5" fill="#6FC2A8"/><circle cx="94" cy="50" r="5" fill="#6FC2A8"/></svg>
+          <div><div style="font-size:18px;font-weight:500;color:#fff;letter-spacing:0.07em;">KAIROS</div><div style="font-size:9px;letter-spacing:0.2em;color:#6FC2A8;text-transform:uppercase;">Automatizaciones</div></div>
+        </div>
+        <div class="logo-version-label">01 — Fondo oscuro (principal)</div>
+      </div>
+      <div class="logo-version" style="background:#F9FAFB; border-color:#E5E7EB;">
+        <div class="logo-mark">
+          <svg width="36" height="36" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="44" stroke="#3A8D7C" stroke-width="5" fill="none"/><circle cx="50" cy="50" r="28" stroke="#3A8D7C" stroke-width="3.5" fill="none"/><ellipse cx="50" cy="50" rx="44" ry="16" stroke="#3A8D7C" stroke-width="3" fill="none" transform="rotate(45 50 50)"/><ellipse cx="50" cy="50" rx="44" ry="16" stroke="#3A8D7C" stroke-width="3" fill="none" transform="rotate(-45 50 50)"/><circle cx="50" cy="6" r="5" fill="#3A8D7C"/><circle cx="50" cy="94" r="5" fill="#3A8D7C"/><circle cx="6" cy="50" r="5" fill="#3A8D7C"/><circle cx="94" cy="50" r="5" fill="#3A8D7C"/></svg>
+          <div><div style="font-size:18px;font-weight:500;color:#2E3236;letter-spacing:0.07em;">KAIROS</div><div style="font-size:9px;letter-spacing:0.2em;color:#3A8D7C;text-transform:uppercase;">Automatizaciones</div></div>
+        </div>
+        <div class="logo-version-label" style="color:#999;">02 — Fondo claro</div>
+      </div>
+      <div class="logo-version" style="background:#2E3236;">
+        <svg width="52" height="52" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="44" stroke="#6FC2A8" stroke-width="5" fill="none"/><circle cx="50" cy="50" r="28" stroke="#6FC2A8" stroke-width="3.5" fill="none"/><ellipse cx="50" cy="50" rx="44" ry="16" stroke="#6FC2A8" stroke-width="3" fill="none" transform="rotate(45 50 50)"/><ellipse cx="50" cy="50" rx="44" ry="16" stroke="#6FC2A8" stroke-width="3" fill="none" transform="rotate(-45 50 50)"/><circle cx="50" cy="6" r="5" fill="#6FC2A8"/><circle cx="50" cy="94" r="5" fill="#6FC2A8"/><circle cx="6" cy="50" r="5" fill="#6FC2A8"/><circle cx="94" cy="50" r="5" fill="#6FC2A8"/></svg>
+        <div class="logo-version-label">03 — Solo símbolo (favicon, avatar)</div>
+      </div>
+      <div class="logo-version" style="background:#F9FAFB; border-color:#E5E7EB;">
+        <svg width="52" height="52" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="44" stroke="#3A8D7C" stroke-width="5" fill="none"/><circle cx="50" cy="50" r="28" stroke="#3A8D7C" stroke-width="3.5" fill="none"/><ellipse cx="50" cy="50" rx="44" ry="16" stroke="#3A8D7C" stroke-width="3" fill="none" transform="rotate(45 50 50)"/><ellipse cx="50" cy="50" rx="44" ry="16" stroke="#3A8D7C" stroke-width="3" fill="none" transform="rotate(-45 50 50)"/><circle cx="50" cy="6" r="5" fill="#3A8D7C"/><circle cx="50" cy="94" r="5" fill="#3A8D7C"/><circle cx="6" cy="50" r="5" fill="#3A8D7C"/><circle cx="94" cy="50" r="5" fill="#3A8D7C"/></svg>
+        <div class="logo-version-label" style="color:#999;">04 — Solo símbolo claro</div>
+      </div>
+    </div>
+
+    <div class="sub-label">Usos correctos e incorrectos</div>
+    <div class="do-dont">
+      <div class="do-card">
+        <div class="do-label">✓ CORRECTO</div>
+        <div class="rule">Siempre con zona de exclusión mínima (24px)</div>
+        <div class="rule">Verde sobre oscuro · Oscuro sobre claro</div>
+        <div class="rule">Proporciones originales mantenidas</div>
+        <div class="rule">Solo símbolo para favicon y avatares</div>
+      </div>
+      <div class="dont-card">
+        <div class="dont-label">✗ INCORRECTO</div>
+        <div class="rule">Cambiar los colores del símbolo</div>
+        <div class="rule">Deformar, rotar o inclinar el logo</div>
+        <div class="rule">Agregar contornos, sombras o efectos</div>
+        <div class="rule">Usar sobre fondos con bajo contraste</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TONO -->
+  <section id="tono">
+    <div class="section-header">
+      <span class="section-number">06</span>
+      <h2 class="section-title">Tono de marca</h2>
+    </div>
+    <div class="sub-label">Voz de marca</div>
+    <div class="tone-grid">
+      <div class="tone-card">
+        <div class="tone-card-label">✓ KAIROS DICE</div>
+        <div class="tone-item">"Optimizamos la ocupación de tu agenda"</div>
+        <div class="tone-item">"Reducimos no-show con impacto medible"</div>
+        <div class="tone-item">"Convertimos procesos en ingresos"</div>
+        <div class="tone-item">"Control operativo desde el primer día"</div>
+        <div class="tone-item">"ROI medible en 30 días"</div>
+      </div>
+      <div class="tone-card">
+        <div class="tone-card-label" style="color:#EF4444;">✗ KAIROS NO DICE</div>
+        <div class="tone-item muted">"Automatizamos tu negocio"</div>
+        <div class="tone-item muted">"Somos innovadores y disruptivos"</div>
+        <div class="tone-item muted">"Solución todo-en-uno mágica"</div>
+        <div class="tone-item muted">"Tecnología de punta avanzada"</div>
+        <div class="tone-item muted">"Simple, rápido y fácil"</div>
+      </div>
+    </div>
+
+    <div class="sub-label">ADN de marca</div>
+    <div class="attr-grid">
+      <div class="attr-card">
+        <div style="font-size:10px;color:#6FC2A8;font-family:'DM Mono',monospace;letter-spacing:0.1em;margin-bottom:12px;">ATRIBUTOS CORE</div>
+        <div class="tone-item">Precisión operativa</div>
+        <div class="tone-item">Automatización inteligente</div>
+        <div class="tone-item">Control y visibilidad</div>
+        <div class="tone-item">Eficiencia medible</div>
+        <div class="tone-item">Tecnología confiable</div>
+      </div>
+      <div class="attr-card">
+        <div style="font-size:10px;color:#6FC2A8;font-family:'DM Mono',monospace;letter-spacing:0.1em;margin-bottom:12px;">REFERENCIAS DE MARCA</div>
+        <div class="tone-item">Notion → claridad visual</div>
+        <div class="tone-item">Stripe → seriedad y confianza</div>
+        <div class="tone-item">Datadog → enfoque analítico</div>
+        <div class="tone-item">Enfocado en salud B2B</div>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem;padding:2rem;background:#1A1D20;border:0.5px solid #2E3236;border-radius:12px;text-align:center;">
+      <div style="font-size:10px;color:#444;font-family:'DM Mono',monospace;letter-spacing:0.1em;margin-bottom:1rem;">FRASE GUÍA</div>
+      <div style="font-size:clamp(1.1rem,2.5vw,1.5rem);font-weight:300;color:#fff;line-height:1.4;">
+        "Kairos convierte pérdida operativa<br>en <span style="color:#6FC2A8;">ingreso medible</span>"
+      </div>
+    </div>
+  </section>
+
+  <div style="margin-top:4rem;padding-top:2rem;border-top:0.5px solid #2E3236;display:flex;justify-content:space-between;align-items:center;">
+    <div style="font-size:11px;color:#444;font-family:'DM Mono',monospace;">Kairos Automatizaciones · Brand Guidelines v1.0 · 2025</div>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <svg width="16" height="16" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="44" stroke="#6FC2A8" stroke-width="6" fill="none"/><circle cx="50" cy="50" r="28" stroke="#6FC2A8" stroke-width="4" fill="none"/><ellipse cx="50" cy="50" rx="44" ry="16" stroke="#6FC2A8" stroke-width="4" fill="none" transform="rotate(45 50 50)"/><ellipse cx="50" cy="50" rx="44" ry="16" stroke="#6FC2A8" stroke-width="4" fill="none" transform="rotate(-45 50 50)"/></svg>
+      <span style="font-size:11px;color:#6FC2A8;font-family:'DM Mono',monospace;">KAIROS</span>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('nav a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`nav a[href="#${e.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { threshold: 0.3 });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
