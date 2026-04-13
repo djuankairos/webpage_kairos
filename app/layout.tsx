@@ -15,7 +15,11 @@ const dmMono = DM_Mono({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kairosautomatizaciones.com";
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "https://kairoswebpage.vercel.app");
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -47,10 +51,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80",
+        url: `${siteUrl}/logo-kairos.png`,
         width: 1200,
-        height: 630,
-        alt: "Equipo médico revisando operaciones digitales",
+        height: 1200,
+        alt: "Logo de Kairos Automatizaciones",
       },
     ],
   },
@@ -60,7 +64,7 @@ export const metadata: Metadata = {
     description:
       "Automatización operativa con impacto medible en ventas, agenda y retención.",
     images: [
-      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80",
+      `${siteUrl}/logo-kairos.png`,
     ],
   },
   category: "B2B Automation",
@@ -79,3 +83,4 @@ export default function RootLayout({
     </html>
   );
 }
+

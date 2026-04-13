@@ -425,12 +425,12 @@ export default function HomePage() {
               GEO SEO
             </p>
             <h2 className="mt-3 text-3xl font-light text-kairos-white md:text-4xl">
-              Cobertura Colombia hoy, arquitectura LATAM para escalar
+              Atrae mas clientes en Colombia y acelera tu expansion en LATAM
             </h2>
             <p className="mt-4 max-w-3xl text-kairos-gray-mid">
-              Esta landing esta optimizada para busquedas comerciales en Colombia y preparada para
-              expansion regional en LATAM con slugs/localizaciones por pais sin romper autoridad
-              SEO.
+              Convertimos trafico regional en oportunidades comerciales reales. Kairos te ayuda a
+              posicionarte en mercados clave de LATAM para captar mas leads calificados, cerrar mas
+              ventas y crecer con una operacion automatizada.
             </p>
             <div className="mt-6 flex flex-wrap gap-3 text-sm">
               {geoCountries.map((countryCode) => (

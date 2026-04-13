@@ -19,18 +19,18 @@ interface Logos3Props {
 }
 
 const defaultLogos: LogoItem[] = [
-  { id: "logo-1", description: "N8N", image: "/logos/n8n_logo.png", className: "h-6 md:h-7 w-auto object-contain" },
-  { id: "logo-2", description: "Hostinger", image: "/logos/hostinger.png", className: "h-6 md:h-7 w-auto object-contain" },
-  { id: "logo-3", description: "Supabase", image: "/logos/supabase.png", className: "h-6 md:h-7 w-auto object-contain" },
-  { id: "logo-4", description: "Twilio", image: "/logos/twilio.png", className: "h-5 md:h-6 w-auto object-contain" },
-  { id: "logo-5", description: "Meta", image: "/logos/meta_logo.png", className: "h-5 md:h-6 w-auto object-contain" },
-  { id: "logo-6", description: "WordPress", image: "/logos/wordpress.jpg", className: "h-6 md:h-7 w-auto object-contain" },
-  { id: "logo-7", description: "WooCommerce", image: "/logos/woocommerce.png", className: "h-6 md:h-7 w-auto object-contain" },
-  { id: "logo-8", description: "Vercel", image: "/logos/vercel.png", className: "h-5 md:h-6 w-auto object-contain" },
-  { id: "logo-9", description: "GitHub", image: "/logos/github.jpg", className: "h-6 md:h-7 w-auto object-contain" },
-  { id: "logo-10", description: "OpenAI", image: "/logos/openAI.jpg", className: "h-5 md:h-6 w-auto object-contain" },
-  { id: "logo-11", description: "Claude", image: "/logos/claude.png", className: "h-6 md:h-7 w-auto object-contain" },
-  { id: "logo-12", description: "WhatsApp", image: "/logos/whatsapp.png", className: "h-6 md:h-7 w-auto object-contain" },
+  { id: "logo-1", description: "N8N", image: "/logos/n8n_logo.png", className: "h-10 md:h-12 w-auto object-contain" },
+  { id: "logo-2", description: "Hostinger", image: "/logos/hostinger.png", className: "h-10 md:h-12 w-auto object-contain" },
+  { id: "logo-3", description: "Supabase", image: "/logos/supabase.png", className: "h-10 md:h-12 w-auto object-contain" },
+  { id: "logo-4", description: "Twilio", image: "/logos/twilio.png", className: "h-9 md:h-10 w-auto object-contain" },
+  { id: "logo-5", description: "Meta", image: "/logos/meta_logo.png", className: "h-9 md:h-10 w-auto object-contain" },
+  { id: "logo-6", description: "WordPress", image: "/logos/wordpress.jpg", className: "h-10 md:h-12 w-auto object-contain" },
+  { id: "logo-7", description: "WooCommerce", image: "/logos/woocommerce.png", className: "h-10 md:h-12 w-auto object-contain" },
+  { id: "logo-8", description: "Vercel", image: "/logos/vercel.png", className: "h-9 md:h-10 w-auto object-contain" },
+  { id: "logo-9", description: "GitHub", image: "/logos/github.jpg", className: "h-10 md:h-12 w-auto object-contain" },
+  { id: "logo-10", description: "OpenAI", image: "/logos/openAI.jpg", className: "h-9 md:h-10 w-auto object-contain" },
+  { id: "logo-11", description: "Claude", image: "/logos/claude.png", className: "h-10 md:h-12 w-auto object-contain" },
+  { id: "logo-12", description: "WhatsApp", image: "/logos/whatsapp.png", className: "h-10 md:h-12 w-auto object-contain" },
 ];
 
 const Logos3 = ({ heading = "Empresas con las que trabajamos", logos = defaultLogos, className }: Logos3Props) => {
@@ -49,14 +49,19 @@ const Logos3 = ({ heading = "Empresas con las que trabajamos", logos = defaultLo
                   key={logo.id}
                   className="flex basis-1/2 justify-center pl-0 sm:basis-1/3 md:basis-1/4 lg:basis-1/6"
                 >
-                  <div className="kairos-hover-card mx-2 flex min-h-16 min-w-[110px] shrink-0 items-center justify-center rounded-xl border border-kairos-dark bg-kairos-panel/80 px-3 py-3 sm:mx-3 sm:min-h-20 sm:min-w-[130px] sm:px-4">
-                    <Image
-                      src={logo.image}
-                      alt={logo.description}
-                      width={160}
-                      height={44}
-                      className={cn("max-w-full opacity-95", logo.className)}
-                    />
+                  <div className="mx-2 flex min-w-[130px] shrink-0 flex-col items-center gap-2 sm:mx-3 sm:min-w-[150px]">
+                    <div className="kairos-hover-card flex min-h-[92px] w-full items-center justify-center rounded-xl border border-kairos-dark bg-kairos-panel/80 px-3 py-3 sm:min-h-[104px] sm:px-4">
+                      <Image
+                        src={logo.image}
+                        alt={logo.description}
+                        width={170}
+                        height={70}
+                        className={cn("max-w-[88%] opacity-95", logo.className)}
+                      />
+                    </div>
+                    <p className="text-center font-mono text-[10px] uppercase tracking-[0.14em] text-kairos-gray-light sm:text-[11px]">
+                      {logo.description}
+                    </p>
                   </div>
                 </CarouselItem>
               ))}
