@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
@@ -42,7 +43,7 @@ export function TestimonialsColumn(props: {
                 >
                   <p className="text-sm leading-relaxed text-kairos-gray-light">{text}</p>
                   <div className="mt-5 flex items-center gap-3">
-                    <img
+                    <Image
                       width={40}
                       height={40}
                       src={image}

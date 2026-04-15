@@ -29,6 +29,17 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-96x96.png", type: "image/png", sizes: "96x96" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
+  manifest: "/site.webmanifest",
   robots: {
     index: true,
     follow: true,
@@ -51,10 +62,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `${siteUrl}/logo-kairos.png`,
+        url: `${siteUrl}/og-image.png`,
         width: 1200,
-        height: 1200,
-        alt: "Logo de Kairos Automatizaciones",
+        height: 630,
+        alt: "Kairos Automatizaciones — Automatización operativa para clínicas en Colombia",
       },
     ],
   },
@@ -64,7 +75,7 @@ export const metadata: Metadata = {
     description:
       "Automatización operativa con impacto medible en ventas, agenda y retención.",
     images: [
-      `${siteUrl}/logo-kairos.png`,
+      `${siteUrl}/og-image.png`,
     ],
   },
   category: "B2B Automation",
@@ -77,10 +88,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es-CO">
+      <head>
+        <link rel="preconnect" href="https://images.unsplash.com" />
+      </head>
       <body className={`${dmSans.variable} ${dmMono.variable} font-sans antialiased`}>
         {children}
+        {/* TODO: Agregar Google Analytics 4 cuando tengas tu ID de medición (G-XXXXXXXXXX):
+          import Script from "next/script";
+          <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
+          <Script id="ga-init" strategy="afterInteractive">{`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}');`}</Script>
+        */}
       </body>
     </html>
   );
 }
-

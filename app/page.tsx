@@ -12,6 +12,7 @@ import {
 import { BeamsBackground } from "@/components/ui/beams-background";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import { Logos3 } from "@/components/ui/logos3";
+import { MobileNav } from "@/components/ui/mobile-nav";
 import { TestimonialsColumn, type TestimonialItem } from "@/components/ui/testimonials-columns-1";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kairosautomatizaciones.com";
@@ -23,28 +24,28 @@ const whatsappHref = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
 )}`;
 
 const results = [
-  { value: "+30%", label: "Mas citas agendadas" },
+  { value: "+30%", label: "Más citas agendadas" },
   { value: "-40%", label: "Menos no-shows" },
-  { value: "24/7", label: "Respuesta automatica en WhatsApp" },
+  { value: "24/7", label: "Respuesta automática en WhatsApp" },
 ];
 
 const problems = [
   "No respondes a tiempo en WhatsApp.",
   "Pierdes citas por falta de seguimiento.",
-  "Tu web recibe trafico pero no convierte.",
+  "Tu web recibe tráfico pero no convierte.",
   "Tu equipo se satura en tareas repetitivas.",
 ];
 
 const solutions = [
   {
     icon: Bot,
-    title: "Atencion Automatica",
-    description: "Responde clientes en segundos y clasifica intenciones sin friccion.",
+    title: "Atención Automática",
+    description: "Responde clientes en segundos y clasifica intenciones sin fricción.",
   },
   {
     icon: CalendarCheck2,
     title: "Agenda Inteligente",
-    description: "Agenda, confirma y recuerda citas con logica de disponibilidad real.",
+    description: "Agenda, confirma y recuerda citas con lógica de disponibilidad real.",
   },
   {
     icon: ChartNoAxesCombined,
@@ -58,60 +59,60 @@ const testimonialItems: TestimonialItem[] = [
     text: "En 5 semanas pasamos de responder tarde a atender en menos de un minuto por WhatsApp. Subieron las citas efectivas sin sumar personal.",
     image:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80",
-    name: "Laura Cardenas",
-    role: "Gerente Operativa - Clinica estetica",
+    name: "Laura Cárdenas",
+    role: "Gerente Operativa - Clínica estética",
   },
   {
-    text: "Kairos nos dio control real de agenda. Confirmaciones y recordatorios automaticos redujeron ausencias y mejoraron caja semanal.",
+    text: "Kairos nos dio control real de agenda. Confirmaciones y recordatorios automáticos redujeron ausencias y mejoraron caja semanal.",
     image:
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80",
-    name: "Sofia Martinez",
-    role: "Directora Administrativa - Centro medico",
+    name: "Sofía Martínez",
+    role: "Directora Administrativa - Centro médico",
   },
   {
-    text: "La implementacion fue rapida y con impacto medible desde el primer mes. Hoy tenemos trazabilidad de cada lead y de cada cita.",
+    text: "La implementación fue rápida y con impacto medible desde el primer mes. Hoy tenemos trazabilidad de cada lead y de cada cita.",
     image:
       "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=200&q=80",
-    name: "Andres Mejia",
+    name: "Andrés Mejía",
     role: "CEO - Red de consultorios",
   },
   {
-    text: "Antes perdiamos oportunidades por seguimiento manual. Con Kairos activamos mensajes en momentos clave y mejoro la conversion.",
+    text: "Antes perdíamos oportunidades por seguimiento manual. Con Kairos activamos mensajes en momentos clave y mejoró la conversión.",
     image:
       "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80",
-    name: "Natalia Rios",
-    role: "Lider Comercial - Salud integral",
+    name: "Natalia Ríos",
+    role: "Líder Comercial - Salud integral",
   },
   {
-    text: "La agenda se estabilizo y el equipo dejo de apagar incendios. Ahora sabemos donde se cae el embudo y que accion tomar.",
+    text: "La agenda se estabilizó y el equipo dejó de apagar incendios. Ahora sabemos dónde se cae el embudo y qué acción tomar.",
     image:
       "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80",
-    name: "Julian Fajardo",
-    role: "COO - Grupo odontologico",
+    name: "Julián Fajardo",
+    role: "COO - Grupo odontológico",
   },
   {
-    text: "Nos gustaron dos cosas: velocidad y claridad. En pocas semanas vimos mejoras en ocupacion y en tiempo de respuesta.",
+    text: "Nos gustaron dos cosas: velocidad y claridad. En pocas semanas vimos mejoras en ocupación y en tiempo de respuesta.",
     image:
       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80",
     name: "Paula Vera",
-    role: "Coordinadora de operaciones - Clinica especializada",
+    role: "Coordinadora de operaciones - Clínica especializada",
   },
   {
-    text: "Con automatizacion de recordatorios y reprogramacion, recuperamos citas que antes se perdian. Es ingreso directo.",
+    text: "Con automatización de recordatorios y reprogramación, recuperamos citas que antes se perdían. Es ingreso directo.",
     image:
       "https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=200&q=80",
     name: "Camilo Torres",
     role: "Director - Centro de bienestar",
   },
   {
-    text: "La experiencia para el paciente mejoro mucho: respuestas claras, confirmaciones a tiempo y menos friccion para agendar.",
+    text: "La experiencia para el paciente mejoró mucho: respuestas claras, confirmaciones a tiempo y menos fricción para agendar.",
     image:
       "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=200&q=80",
-    name: "Valeria Leon",
-    role: "Gestora de experiencia - Clinica privada",
+    name: "Valeria León",
+    role: "Gestora de experiencia - Clínica privada",
   },
   {
-    text: "Kairos nos ayudo a dejar de operar a ciegas. Hoy cada automatizacion tiene KPI y podemos medir retorno con precision.",
+    text: "Kairos nos ayudó a dejar de operar a ciegas. Hoy cada automatización tiene KPI y podemos medir retorno con precisión.",
     image:
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80",
     name: "Miguel Ospina",
@@ -131,7 +132,6 @@ const organizationSchema = {
   name: "Kairos Automatizaciones",
   url: siteUrl,
   telephone: "+57 3151069572",
-  sameAs: [siteUrl],
   contactPoint: [
     {
       "@type": "ContactPoint",
@@ -146,7 +146,7 @@ const organizationSchema = {
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  serviceType: "Automatizacion operativa y comercial B2B",
+  serviceType: "Automatización operativa y comercial B2B",
   provider: {
     "@type": "Organization",
     name: "Kairos Automatizaciones",
@@ -160,8 +160,8 @@ const serviceSchema = {
   },
   offers: {
     "@type": "Offer",
-    name: "Diagnostico operativo inicial",
-    description: "Evaluacion por WhatsApp para identificar perdidas y oportunidades.",
+    name: "Diagnóstico operativo inicial",
+    description: "Evaluación por WhatsApp para identificar pérdidas y oportunidades.",
     price: "0",
     priceCurrency: "COP",
   },
@@ -173,21 +173,60 @@ const websiteSchema = {
   name: "Kairos Automatizaciones",
   url: siteUrl,
   inLanguage: "es-CO",
-  potentialAction: {
-    "@type": "SearchAction",
-    target: `${siteUrl}/?q={search_term_string}`,
-    "query-input": "required name=search_term_string",
-  },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "¿Por qué pierdo clientes si tengo WhatsApp activo?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Si no respondes a tiempo en WhatsApp, los pacientes buscan otra clínica. Kairos automatiza la respuesta inmediata para que ningún mensaje quede sin atender.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "¿Cómo reduzco los no-shows en mi clínica?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Con recordatorios automáticos y opciones de reprogramación enviados por WhatsApp antes de cada cita, las ausencias se reducen hasta un 40%.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "¿Por qué mi web recibe tráfico pero no convierte pacientes?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "El tráfico sin seguimiento automatizado se pierde. Kairos conecta el tráfico web con flujos de WhatsApp que guían al paciente hasta agendar.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "¿Cómo dejo de saturar a mi equipo con tareas repetitivas?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Kairos automatiza confirmaciones, recordatorios, seguimientos y reprogramaciones, liberando a tu equipo para tareas de mayor valor clínico.",
+      },
+    },
+  ],
 };
 
 export default function HomePage() {
   return (
     <BeamsBackground intensity="strong">
+      {/* Skip to content link — visible only on keyboard focus */}
+      <a href="#inicio" className="skip-to-content">
+        Saltar al contenido principal
+      </a>
+
       <main className="relative">
         <header className="sticky top-0 z-30 border-b border-kairos-dark/80 bg-black/40 backdrop-blur-xl">
-          <div className="kairos-container flex items-center justify-between py-4">
+          <div className="kairos-container relative flex items-center justify-between py-4">
             <a href="#inicio" className="flex items-center gap-3" aria-label="Kairos Inicio">
-              <Image src="/logo-kairos.png" alt="Logo Kairos" width={36} height={36} />
+              <Image src="/logo-kairos.png" alt="Logo Kairos" width={36} height={36} priority />
               <div>
                 <p className="font-mono text-xs uppercase tracking-[0.18em] text-kairos-green">
                   Automatizaciones
@@ -195,25 +234,33 @@ export default function HomePage() {
                 <p className="text-sm font-medium tracking-[0.06em] text-kairos-white">KAIROS</p>
               </div>
             </a>
-            <nav className="hidden gap-6 text-sm text-kairos-gray-light md:flex">
-              <a href="#solucion" className="hover:text-kairos-green">
-                Solucion
+
+            {/* Desktop nav — hidden on mobile */}
+            <nav className="hidden gap-6 text-sm text-kairos-gray-light md:flex" aria-label="Navegación principal">
+              <a href="#solucion" className="hover:text-kairos-green transition-colors">
+                Solución
               </a>
-              <a href="#resultados" className="hover:text-kairos-green">
+              <a href="#resultados" className="hover:text-kairos-green transition-colors">
                 Resultados
               </a>
-              <a href="#testimonios" className="hover:text-kairos-green">
+              <a href="#testimonios" className="hover:text-kairos-green transition-colors">
                 Testimonios
               </a>
-              <a href="#geo" className="hover:text-kairos-green">
+              <a href="#geo" className="hover:text-kairos-green transition-colors">
                 Cobertura
               </a>
             </nav>
-            <a href={whatsappHref} target="_blank" rel="noopener noreferrer">
-              <HoverBorderGradient className="px-4 py-2 text-xs md:text-sm">
-                Hablar por WhatsApp
-              </HoverBorderGradient>
-            </a>
+
+            <div className="flex items-center gap-2">
+              {/* Mobile hamburger (client component) */}
+              <MobileNav />
+              {/* CTA button — always visible */}
+              <a href={whatsappHref} target="_blank" rel="noopener noreferrer">
+                <HoverBorderGradient className="px-4 py-2 text-xs md:text-sm">
+                  Hablar por WhatsApp
+                </HoverBorderGradient>
+              </a>
+            </div>
           </div>
         </header>
 
@@ -221,14 +268,14 @@ export default function HomePage() {
           <div className="kairos-container grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div className="space-y-7">
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-kairos-green">
-                Automatizacion inteligente
+                Automatización inteligente
               </p>
               <h1 className="max-w-2xl text-4xl font-light leading-tight text-kairos-white md:text-6xl">
-                Convierte tu operacion en una maquina de clientes automatica.
+                Convierte tu operación en una máquina de clientes automática.
               </h1>
               <p className="max-w-xl text-base leading-relaxed text-kairos-gray-mid md:text-lg">
-                Kairos automatiza WhatsApp, agenda y seguimiento para que vendas mas sin inflar
-                nomina ni perder control operativo.
+                Kairos automatiza WhatsApp, agenda y seguimiento para que vendas más sin inflar
+                nómina ni perder control operativo.
               </p>
               <div className="flex flex-wrap gap-4">
                 <a href={whatsappHref} target="_blank" rel="noopener noreferrer">
@@ -281,7 +328,7 @@ export default function HomePage() {
           <div className="kairos-container">
             <div className="kairos-hover-card rounded-2xl border border-kairos-red/30 bg-kairos-panel/80 p-7">
               <h2 className="text-2xl font-medium text-kairos-white md:text-3xl">
-                Estas perdiendo clientes todos los dias (y no lo sabes)
+                Estás perdiendo clientes todos los días (y no lo sabes)
               </h2>
               <div className="mt-6 grid gap-4 md:grid-cols-2">
                 {problems.map((problem) => (
@@ -302,7 +349,7 @@ export default function HomePage() {
           <div className="kairos-container">
             <div className="mb-8 max-w-2xl space-y-3">
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-kairos-green">
-                Solucion Kairos
+                Solución Kairos
               </p>
               <h2 className="text-3xl font-light text-kairos-white md:text-5xl">
                 Kairos trabaja por ti 24/7
@@ -330,11 +377,11 @@ export default function HomePage() {
                 Impacto medible
               </p>
               <h2 className="mt-4 text-3xl font-light text-kairos-white md:text-5xl">
-                Resultados que si se sienten en caja y agenda.
+                Resultados que sí se sienten en caja y agenda.
               </h2>
               <p className="mt-4 max-w-xl text-base text-kairos-gray-mid">
-                Medimos cada automatizacion por su efecto en ocupacion, velocidad de respuesta y
-                conversion comercial.
+                Medimos cada automatización por su efecto en ocupación, velocidad de respuesta y
+                conversión comercial.
               </p>
             </div>
             <div className="grid gap-4 md:grid-cols-3">
@@ -361,8 +408,8 @@ export default function HomePage() {
                 Lo que dicen nuestros clientes
               </h2>
               <p className="mt-4 text-kairos-gray-mid">
-                Historias reales de equipos que mejoraron su ocupacion y su conversion con
-                automatizacion operativa.
+                Historias reales de equipos que mejoraron su ocupación y su conversión con
+                automatización operativa.
               </p>
             </div>
             <div className="mt-10 flex max-h-[740px] justify-center gap-6 overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_22%,black_78%,transparent)]">
@@ -385,20 +432,20 @@ export default function HomePage() {
           <div className="kairos-container grid gap-8 rounded-2xl border border-kairos-dark bg-kairos-panel/85 p-8 lg:grid-cols-2 lg:items-center kairos-hover-card">
             <div className="space-y-4">
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-kairos-green">
-                Especializado para clinicas
+                Especializado para clínicas
               </p>
               <h2 className="text-3xl font-light text-kairos-white md:text-4xl">
                 Tu WhatsApp se vuelve una recepcionista 24/7
               </h2>
               <p className="text-kairos-gray-mid">
-                Perfecto para clinicas y consultorios que necesitan reducir no-show, mantener la
+                Perfecto para clínicas y consultorios que necesitan reducir no-show, mantener la
                 agenda llena y sostener seguimiento sin saturar al equipo.
               </p>
               <ul className="space-y-3 text-sm text-kairos-gray-light">
                 {[
                   "Paciente escribe y recibe respuesta inmediata.",
-                  "Agenda y confirmacion automatica segun disponibilidad.",
-                  "Recordatorios inteligentes con opciones de reprogramacion.",
+                  "Agenda y confirmación automática según disponibilidad.",
+                  "Recordatorios inteligentes con opciones de reprogramación.",
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-2">
                     <ShieldCheck className="h-4 w-4 text-kairos-green" />
@@ -410,7 +457,7 @@ export default function HomePage() {
             <div className="kairos-hover-card overflow-hidden rounded-2xl border border-kairos-dark">
               <Image
                 src="https://images.unsplash.com/photo-1666214280391-8ff5bd3c0bf0?auto=format&fit=crop&w=1200&q=80"
-                alt="Equipo de salud revisando atencion digital"
+                alt="Equipo de salud revisando atención digital"
                 width={1200}
                 height={900}
                 className="h-full w-full object-cover"
@@ -425,12 +472,12 @@ export default function HomePage() {
               GEO SEO
             </p>
             <h2 className="mt-3 text-3xl font-light text-kairos-white md:text-4xl">
-              Atrae mas clientes en Colombia y acelera tu expansion en LATAM
+              Atrae más clientes en Colombia y acelera tu expansión en LATAM
             </h2>
             <p className="mt-4 max-w-3xl text-kairos-gray-mid">
-              Convertimos trafico regional en oportunidades comerciales reales. Kairos te ayuda a
-              posicionarte en mercados clave de LATAM para captar mas leads calificados, cerrar mas
-              ventas y crecer con una operacion automatizada.
+              Convertimos tráfico regional en oportunidades comerciales reales. Kairos te ayuda a
+              posicionarte en mercados clave de LATAM para captar más leads calificados, cerrar más
+              ventas y crecer con una operación automatizada.
             </p>
             <div className="mt-6 flex flex-wrap gap-3 text-sm">
               {geoCountries.map((countryCode) => (
@@ -451,7 +498,7 @@ export default function HomePage() {
               Deja de perder clientes. Empieza a automatizar hoy.
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-kairos-gray-mid">
-              Recibe un diagnostico inicial por WhatsApp y descubre en minutos donde estas perdiendo
+              Recibe un diagnóstico inicial por WhatsApp y descubre en minutos dónde estás perdiendo
               ingresos operativos.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
@@ -470,8 +517,42 @@ export default function HomePage() {
           </div>
         </section>
 
-        <footer className="border-t border-kairos-dark/90 py-8 text-center text-xs text-kairos-gray-mid">
-          <p>Kairos Automatizaciones · Colombia · SEO GEO ready para LATAM</p>
+        <footer className="border-t border-kairos-dark/90 py-10 text-xs text-kairos-gray-mid">
+          <div className="kairos-container">
+            <div className="flex flex-col items-center gap-6 md:flex-row md:items-start md:justify-between">
+
+              {/* Brand */}
+              <div className="space-y-2 text-center md:text-left">
+                <p className="font-mono text-sm uppercase tracking-[0.18em] text-kairos-green">
+                  Kairos Automatizaciones
+                </p>
+                <p className="text-kairos-gray-mid">
+                  Automatización operativa para clínicas en Colombia y LATAM.
+                </p>
+                <p className="text-kairos-gray-mid">
+                  <a href="tel:+573151069572" className="hover:text-kairos-green transition-colors">
+                    +57 315 106 9572
+                  </a>
+                </p>
+              </div>
+
+              {/* Section links */}
+              <nav aria-label="Pie de página" className="flex flex-col items-center gap-2 md:items-end">
+                <a href="#inicio" className="hover:text-kairos-green transition-colors">Inicio</a>
+                <a href="#solucion" className="hover:text-kairos-green transition-colors">Solución</a>
+                <a href="#resultados" className="hover:text-kairos-green transition-colors">Resultados</a>
+                <a href="#testimonios" className="hover:text-kairos-green transition-colors">Testimonios</a>
+                <a href="#geo" className="hover:text-kairos-green transition-colors">Cobertura</a>
+              </nav>
+
+            </div>
+
+            {/* Copyright */}
+            <p className="mt-8 border-t border-kairos-dark/60 pt-6 text-center text-kairos-gray-mid">
+              © {new Date().getFullYear()} Kairos Automatizaciones. Todos los derechos reservados.
+              Colombia.
+            </p>
+          </div>
         </footer>
       </main>
 
@@ -497,6 +578,10 @@ export default function HomePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
     </BeamsBackground>
   );
