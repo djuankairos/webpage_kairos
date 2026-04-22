@@ -25,6 +25,7 @@ type Props = React.PropsWithChildren<{
   className?: string;
   duration?: number;
   clockwise?: boolean;
+  shape?: "pill" | "card";
 }> &
   React.HTMLAttributes<HTMLElement>;
 
@@ -35,6 +36,7 @@ export function HoverBorderGradient({
   as: Element = "button",
   duration = 1,
   clockwise = true,
+  shape = "pill",
   ...props
 }: Props) {
   const [hovered, setHovered] = useState(false);
@@ -58,12 +60,15 @@ export function HoverBorderGradient({
     }
   }, [hovered, duration, clockwise]);
 
+  const isCard = shape === "card";
+
   return (
     <Element
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className={cn(
-        "relative flex h-min w-fit flex-col items-center justify-center overflow-visible rounded-full border border-kairos-green/30 bg-black/50 p-px backdrop-blur-sm transition duration-500 hover:bg-black/65",
+        "relative flex h-min w-fit flex-col items-center justify-center overflow-visible border border-kairos-green/30 bg-black/50 p-px backdrop-blur-sm transition duration-500 hover:bg-black/65",
+        isCard ? "rounded-2xl" : "rounded-full",
         containerClassName
       )}
       {...props}
@@ -90,7 +95,12 @@ export function HoverBorderGradient({
         }}
         transition={{ ease: "linear", duration: duration ?? 1 }}
       />
-      <div className="absolute inset-0.5 z-[1] rounded-[100px] bg-kairos-dark" />
+      <div
+        className={cn(
+          "absolute inset-0.5 z-[1] bg-kairos-dark",
+          isCard ? "rounded-[14px]" : "rounded-[100px]"
+        )}
+      />
     </Element>
   );
 }

@@ -28,6 +28,20 @@ const config: Config = {
       boxShadow: {
         glow: "0 0 40px rgba(111, 194, 168, 0.25)",
       },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
       backgroundImage: {
         "kairos-grid":
           "linear-gradient(rgba(111,194,168,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(111,194,168,0.08) 1px, transparent 1px)",
