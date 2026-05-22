@@ -4,7 +4,6 @@ import { BarChart3, CheckCheck, Globe, MessageCircle, Search, Zap } from "lucide
 import { BeamsBackground } from "@/components/ui/beams-background";
 import { FaqsSection, type FaqItem } from "@/components/ui/faqs-1";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
-import { Logos3 } from "@/components/ui/logos3";
 import { TimelineContent } from "@/components/ui/timeline-animation";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
@@ -292,9 +291,6 @@ export default function ServicioWebGeoPage() {
             </article>
           </div>
         </section>
-
-        {/* ─── TRUST BAR ─── */}
-        <Logos3 heading="Stack que usamos para construir tu web" />
 
         {/* ─── PROBLEMS ─── */}
         <section className="kairos-section">
