@@ -40,7 +40,7 @@ function template(post) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>${escapeHtml(post.titulo)} | Blog de Juan Álvarez</title>
+  <title>${escapeHtml(post.titulo)} | Kairos · Juan Camilo Alvarado</title>
   <meta name="description" content="${escapeHtml(post.meta_descripcion)}" />
   <link rel="canonical" href="${url}" />
 
@@ -56,6 +56,7 @@ function template(post) {
   <meta name="twitter:title" content="${escapeHtml(post.titulo)}" />
   <meta name="twitter:description" content="${escapeHtml(post.meta_descripcion)}" />
   <meta name="twitter:image" content="${image}" />
+  <meta name="twitter:site" content="@Djuank" />
 
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -74,7 +75,7 @@ function template(post) {
     "headline": "${escapeHtml(post.titulo)}",
     "description": "${escapeHtml(post.meta_descripcion)}",
     "datePublished": "${post.fecha}",
-    "author": { "@type": "Person", "name": "Juan Álvarez" },
+    "author": { "@type": "Person", "name": "Juan Camilo Alvarado" },
     "image": "${image}",
     "mainEntityOfPage": "${url}"
   }
@@ -83,11 +84,11 @@ function template(post) {
 <body class="blog-body" data-post-slug="${escapeHtml(post.slug)}">
   <header class="blog-header">
     <div class="blog-container blog-header-inner">
-      <a class="blog-logo" href="/blog/index.html">Juan<span>.</span>Blog</a>
+      <a class="blog-logo" href="/blog/index.html">Kairos<span>.</span></a>
       <nav class="blog-nav">
         <a href="/blog/index.html#posts">Artículos</a>
         <a href="/blog/index.html#suscribete">Suscríbete</a>
-        <a href="/">Kairos</a>
+        <a href="/">Kairos Automatizaciones</a>
       </nav>
     </div>
   </header>
@@ -99,7 +100,7 @@ function template(post) {
       <h1 class="blog-post-title">${escapeHtml(post.titulo)}</h1>
       <p class="blog-post-subtitle">${escapeHtml(post.extracto)}</p>
       <div class="blog-post-meta">
-        <span>Juan Álvarez</span>
+        <span>Juan Camilo Alvarado</span>
         <span>·</span>
         <time datetime="${post.fecha}">${formatDate(post.fecha)}</time>
       </div>
@@ -117,9 +118,13 @@ function template(post) {
     <aside class="blog-sidebar">
       <div class="blog-sidebar-box">
         <h4>Sobre el autor</h4>
-        <img class="blog-author-avatar" src="/logo-kairos.png" alt="Juan Álvarez" />
-        <p class="blog-author-name">Juan Álvarez</p>
-        <p class="blog-author-bio">Fundador de Kairos. Escribo sobre liderazgo, ventas y las conexiones que de verdad importan en el trabajo.</p>
+        <img class="blog-author-avatar" src="/logo-kairos.png" alt="Juan Camilo Alvarado" />
+        <p class="blog-author-name">Juan Camilo Alvarado</p>
+        <p class="blog-author-bio">Fundador de Kairos Automatizaciones. Escribo sobre liderazgo, ventas y las conexiones que de verdad importan en el trabajo.</p>
+        <div class="blog-sidebar-socials">
+          <a href="https://www.linkedin.com/in/juan-camilo-alvarado-luna-0b248741/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://x.com/Djuank" target="_blank" rel="noopener">X</a>
+        </div>
       </div>
 
       <div class="blog-sidebar-box">
@@ -136,7 +141,7 @@ function template(post) {
 
   <footer class="blog-footer">
     <div class="blog-container">
-      <p>© <span id="blog-year"></span> Juan Álvarez · Un proyecto personal, independiente de <a href="/">Kairos</a>.</p>
+      <p>© <span id="blog-year"></span> Juan Camilo Alvarado · Kairos es un proyecto personal, independiente de <a href="/">Kairos Automatizaciones</a>.</p>
     </div>
   </footer>
 
