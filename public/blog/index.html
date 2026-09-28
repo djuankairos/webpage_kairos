@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liderazgo, Ventas y Conexión | Blog de Juan Álvarez</title>
+  <meta name="description" content="Un blog personal sobre liderazgo, ventas, conexión humana y crecimiento profesional. Reflexiones directas, sin relleno." />
+  <link rel="canonical" href="https://kairospro.online/blog/index.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Liderazgo, Ventas y Conexión | Blog personal" />
+  <meta property="og:description" content="Reflexiones sobre liderazgo, ventas, conexión humana y crecimiento continuo." />
+  <meta property="og:url" content="https://kairospro.online/blog/index.html" />
+  <meta property="og:image" content="https://kairospro.online/og-image.png" />
+  <meta property="og:locale" content="es_CO" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Liderazgo, Ventas y Conexión | Blog personal" />
+  <meta name="twitter:description" content="Reflexiones sobre liderazgo, ventas, conexión humana y crecimiento continuo." />
+  <meta name="twitter:image" content="https://kairospro.online/og-image.png" />
+
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/css/blog.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Blog personal de Juan Álvarez",
+    "description": "Reflexiones sobre liderazgo, ventas, conexión humana y crecimiento profesional.",
+    "url": "https://kairospro.online/blog/index.html"
+  }
+  </script>
+</head>
+<body class="blog-body">
+  <header class="blog-header">
+    <div class="blog-container blog-header-inner">
+      <a class="blog-logo" href="/blog/index.html">Juan<span>.</span>Blog</a>
+      <nav class="blog-nav">
+        <a href="/blog/index.html#posts">Artículos</a>
+        <a href="/blog/index.html#suscribete">Suscríbete</a>
+        <a href="/">Kairos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-hero">
+      <div class="blog-container">
+        <span class="blog-hero-eyebrow">Blog personal</span>
+        <h1>Liderazgo<span class="dot"> • </span>Ventas<span class="dot"> • </span>Conexión<span class="dot"> • </span>Crecimiento</h1>
+        <p>
+          Este espacio existe porque casi todo lo que aprendí de verdad sobre liderar, vender y conectar con
+          personas no salió de un libro de management: salió de conversaciones incómodas, errores repetidos
+          y aprendizaje constante. Escribo sobre lo que funciona de verdad, sin fórmulas mágicas.
+        </p>
+
+        <div class="blog-subscribe" id="suscribete">
+          <h3>Recibe cada artículo nuevo</h3>
+          <p>Sin spam, sin relleno. Solo ideas que valen la pena leer.</p>
+          <form id="blog-subscribe-form" class="blog-subscribe-row" novalidate>
+            <input type="text" name="name" placeholder="Tu nombre" autocomplete="name" required />
+            <input type="email" name="email" placeholder="Tu correo" autocomplete="email" required />
+            <button type="submit">Suscribirme</button>
+          </form>
+          <p class="blog-subscribe-msg" id="blog-subscribe-msg"></p>
+        </div>
+
+        <div class="blog-socials">
+          <a href="https://www.linkedin.com/in/tu-usuario" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://twitter.com/tu-usuario" target="_blank" rel="noopener">Twitter / X</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="blog-section" id="posts">
+      <div class="blog-container">
+        <h2 class="blog-section-title">Últimos artículos</h2>
+        <div class="blog-posts-grid" id="blog-recent-posts">
+          <!-- Se renderiza dinámicamente con /js/blog.js desde /data/posts.json -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="blog-footer">
+    <div class="blog-container">
+      <p>© <span id="blog-year"></span> Juan Álvarez · Un proyecto personal, independiente de <a href="/">Kairos</a>.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("blog-year").textContent = new Date().getFullYear();
+  </script>
+  <script src="/js/blog.js"></script>
+</body>
+</html>

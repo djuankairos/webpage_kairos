@@ -1,0 +1,35 @@
+[
+  {
+    "id": 3,
+    "titulo": "Liderar sin necesitar el título de jefe",
+    "slug": "liderar-sin-titulo-de-jefe",
+    "fecha": "2026-09-20",
+    "extracto": "El liderazgo real no aparece en el organigrama. Aparece en la sala donde alguien decide hacerse cargo antes de que se lo pidan.",
+    "tags": ["Liderazgo", "Equipos"],
+    "imagen_destacada": "/logo-kairos.png",
+    "meta_descripcion": "Por qué liderar no depende de un cargo, sino de la disposición a asumir responsabilidad antes que nadie te lo pida.",
+    "contenido_html": "<p>Durante años pensé que liderazgo era sinónimo de jerarquía: primero el título, después la influencia. Me equivoqué en el orden.</p><h2>El liderazgo se ejerce, no se otorga</h2><p>He visto personas sin ningún poder formal mover a un equipo entero simplemente porque decidieron hacerse cargo de un problema que nadie más quería tocar. Y he visto directores con el título perfecto a los que nadie seguía de verdad.</p><ul><li>La autoridad formal te da permiso para exigir.</li><li>El liderazgo real te da permiso para pedir, porque ya te lo ganaste.</li><li>Uno se asigna, el otro se construye conversación a conversación.</li></ul><blockquote>\"La gente no sigue títulos, sigue confianza acumulada.\"</blockquote><h2>Tres señales de que estás liderando sin necesitarlo</h2><p><strong>1. Tomas decisiones incómodas sin esperar a que te autoricen.</strong> No es insubordinación, es criterio.</p><p><strong>2. Dices la verdad cuando es más fácil callar.</strong> El silencio protege tu comodidad, no al equipo.</p><p><strong>3. Compartes el crédito y te quedas con el problema.</strong> Así se construye la reputación que ningún ascenso te puede dar.</p><p>Si estás esperando el título para empezar a liderar, ya llegaste tarde. El título solo confirma lo que ya estabas haciendo.</p>"
+  },
+  {
+    "id": 2,
+    "titulo": "Vender es resolver, no convencer",
+    "slug": "vender-es-resolver-no-convencer",
+    "fecha": "2026-09-10",
+    "extracto": "Las mejores ventas que he cerrado no tuvieron un solo argumento de cierre. Tuvieron una pregunta bien hecha y un problema bien entendido.",
+    "tags": ["Ventas", "Crecimiento"],
+    "imagen_destacada": "/logo-kairos.png",
+    "meta_descripcion": "Un cambio de mentalidad en ventas: dejar de convencer y empezar a resolver problemas reales del cliente.",
+    "contenido_html": "<p>Pasé mis primeros años en ventas creyendo que mi trabajo era convencer. Preparaba objeciones, guiones, respuestas para cada \"no\". Funcionaba, pero mal y poco.</p><h2>El giro que cambió todo</h2><p>El día que dejé de vender y empecé a diagnosticar, las conversaciones cambiaron de forma radical. En vez de preguntar \"¿qué necesito decir para que compre?\", empecé a preguntar <strong>\"¿qué le está costando de verdad no resolver esto?\"</strong></p><ul><li>Un cliente no compra un producto, compra el alivio de un problema.</li><li>Si entiendes el problema mejor que él, la venta ya casi está hecha.</li><li>Convencer genera resistencia; resolver genera gratitud.</li></ul><blockquote>\"Nadie se resiste a que le resuelvan un problema real. Todos se resisten a que les vendan algo que no pidieron.\"</blockquote><h2>Cómo se aplica esto en la práctica</h2><p>Antes de hablar de tu producto, dedica el 70% de la conversación a entender el costo real del problema: tiempo perdido, dinero que se escapa, estrés acumulado. Cuando el cliente mismo dice en voz alta ese costo, tu producto deja de ser una venta y se convierte en la solución obvia.</p><p>La próxima vez que sientas la tentación de \"cerrar\", pregúntate si en verdad entendiste el problema. Si la respuesta es no, todavía no estás listo para vender.</p>"
+  },
+  {
+    "id": 1,
+    "titulo": "Las conexiones que importan no se hacen en eventos de networking",
+    "slug": "conexiones-que-importan-no-networking",
+    "fecha": "2026-08-28",
+    "extracto": "Coleccioné cientos de tarjetas de presentación antes de entender que ninguna relación real nació de una conversación de treinta segundos.",
+    "tags": ["Conexión", "Networking"],
+    "imagen_destacada": "/logo-kairos.png",
+    "meta_descripcion": "Por qué las relaciones profesionales duraderas se construyen fuera de los eventos de networking tradicionales.",
+    "contenido_html": "<p>Fui a decenas de eventos de networking con una libreta mental de objetivos: cuántas tarjetas, cuántos contactos, cuántos LinkedIn agregados. Al final del día me sentía productivo. Un año después, casi ninguno de esos contactos seguía en mi vida.</p><h2>Lo que sí funcionó</h2><p>Las relaciones que de verdad me abrieron puertas empezaron distinto: un mensaje genuino sobre algo que la otra persona publicó, una pregunta sin agenda oculta, una ayuda ofrecida sin esperar nada a cambio.</p><ul><li>Las conexiones reales no se cierran en una conversación, se construyen con el tiempo.</li><li>El interés genuino se nota, y la agenda oculta también.</li><li>Ayudar primero, sin llevar la cuenta, es la estrategia de networking más subestimada que existe.</li></ul><blockquote>\"Nadie recuerda tu discurso de elevador. Todos recuerdan cómo los hiciste sentir.\"</blockquote><h2>Una práctica simple</h2><p>En vez de perseguir contactos nuevos cada semana, elige a tres personas de tu red actual y profundiza esa relación: un mensaje, una llamada, una recomendación genuina. Con el tiempo, esa red pequeña y cuidada vale más que quinientas tarjetas en un cajón.</p><p>El networking que perdura no se hace en la sala del evento. Se hace después, cuando ya nadie está mirando.</p>"
+  }
+]
