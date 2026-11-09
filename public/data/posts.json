@@ -12,12 +12,82 @@
     "imagen_destacada": null
   },
   {
+    "id": "413dbb38-fca4-81de-9ebe-d1a02be28257",
+    "titulo": "Serie Liderazgo (5/5): Los líderes son lectores",
+    "slug": "serie-liderazgo-55-los-lideres-son-lectores",
+    "fecha": "2026-10-21",
+    "extracto": "\"No tengo tiempo para leer\" era la mentira que más se repetía. Así se pasa de la intención a bloquear 20 minutos diarios para leer y liderar con mejores marcos de trabajo.",
+    "meta_descripcion": "\"No tengo tiempo para leer\" era la mentira que más se repetía. Así se pasa de la intención a bloquear 20 minutos diarios para leer y liderar con mejores marcos de trabajo.",
+    "tags": [
+      "Aprendizaje"
+    ],
+    "imagen_destacada": null
+  },
+  {
+    "id": "413dbb38-fca4-81bc-b951-d2251ac507bc",
+    "titulo": "Serie Liderazgo (3/5): Las ventas no comienzan con un producto, comienzan con una persona",
+    "slug": "serie-liderazgo-35-las-ventas-no-comienzan-con-un-producto-comienzan-con-una-persona",
+    "fecha": "2026-10-14",
+    "extracto": "Después de 17 años liderando equipos comerciales, la conclusión es clara: las ventas no comienzan con un producto, comienzan cuando conectamos con una persona y construimos confianza real.",
+    "meta_descripcion": "Después de 17 años liderando equipos comerciales, la conclusión es clara: las ventas no comienzan con un producto, comienzan cuando conectamos con una persona y construimos confianza real.",
+    "tags": [
+      "Liderazgo"
+    ],
+    "imagen_destacada": null
+  },
+  {
     "id": "413dbb38-fca4-812c-8a5f-f3489f2fc4a1",
     "titulo": "Serie Liderazgo (1/5): #MartesDeLiderazgo, cuando dejas de ser el jefe que pide",
     "slug": "serie-liderazgo-15-martesdeliderazgo-cuando-dejas-de-ser-el-jefe-que-pide",
     "fecha": "2026-10-08",
     "extracto": "Una representante le preguntó por qué pedía tantos datos si ya veía que las cosas iban mal. Esa conversación cambió su forma de liderar con transparencia y cifras.",
     "meta_descripcion": "Una representante le preguntó por qué pedía tantos datos si ya veía que las cosas iban mal. Esa conversación cambió su forma de liderar con transparencia y cifras.",
+    "tags": [
+      "Liderazgo"
+    ],
+    "imagen_destacada": null
+  },
+  {
+    "id": "413dbb38-fca4-816e-b35a-e484c6138534",
+    "titulo": "Serie Liderazgo (2/5): El Objetivo del Escalador",
+    "slug": "serie-liderazgo-25-el-objetivo-del-escalador",
+    "fecha": "2026-10-03",
+    "extracto": "Como el escalador que ya subió 90 de 100 metros, el enfoque en la meta -y no en lo que falta- es lo que diferencia a quienes llegan a la cima.",
+    "meta_descripcion": "Como el escalador que ya subió 90 de 100 metros, el enfoque en la meta -y no en lo que falta- es lo que diferencia a quienes llegan a la cima.",
+    "tags": [
+      "Aprendizaje"
+    ],
+    "imagen_destacada": null
+  },
+  {
+    "id": "413dbb38-fca4-81ee-ad62-d4f9b81bc956",
+    "titulo": "El espejismo del IVA exento",
+    "slug": "el-espejismo-del-iva-exento",
+    "fecha": "2026-09-24",
+    "extracto": "Una exención de IVA no siempre se traduce en precios más bajos para el consumidor: muchas veces el beneficio fiscal se diluye en los márgenes de la cadena de suministro.",
+    "meta_descripcion": "Una exención de IVA no siempre se traduce en precios más bajos para el consumidor: muchas veces el beneficio fiscal se diluye en los márgenes de la cadena de suministro.",
+    "tags": [],
+    "imagen_destacada": null
+  },
+  {
+    "id": "413dbb38-fca4-8105-a382-c83aff693eae",
+    "titulo": "El costo oculto de evitar una conversación incómoda a tiempo",
+    "slug": "el-costo-oculto-de-evitar-una-conversacion-incomoda-a-tiempo",
+    "fecha": "2026-08-19",
+    "extracto": "Postergar una conversación difícil no protege la armonía del equipo: desgasta la confianza, genera retrabajo y reduce la rentabilidad. La claridad es la forma más alta de respeto profesional.",
+    "meta_descripcion": "Postergar una conversación difícil no protege la armonía del equipo: desgasta la confianza, genera retrabajo y reduce la rentabilidad. La claridad es la forma más alta de respeto profesional.",
+    "tags": [
+      "Liderazgo"
+    ],
+    "imagen_destacada": null
+  },
+  {
+    "id": "413dbb38-fca4-8113-8c80-ee49ea20dc80",
+    "titulo": "Por qué la jerarquía tradicional está destruyendo la agilidad en las organizaciones modernas",
+    "slug": "por-que-la-jerarquia-tradicional-esta-destruyendo-la-agilidad-en-las-organizaciones-modernas",
+    "fecha": "2026-08-17",
+    "extracto": "El modelo jerárquico de arriba hacia abajo genera cuellos de botella. El liderazgo circular distribuye la toma de decisiones según contexto y experiencia, no según el cargo, ganando velocidad y autonomía.",
+    "meta_descripcion": "El modelo jerárquico de arriba hacia abajo genera cuellos de botella. El liderazgo circular distribuye la toma de decisiones según contexto y experiencia, no según el cargo, ganando velocidad y autonomía.",
     "tags": [
       "Liderazgo"
     ],
