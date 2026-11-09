@@ -206,6 +206,13 @@ img {
   min-height: 1.2em;
 }
 
+.blog-subscribe-embed {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  border-radius: 8px;
+}
+
 .blog-subscribe-msg.success {
   color: #7fd88f;
 }
