@@ -74,6 +74,16 @@ function plainTextFrom(richText) {
   return (richText || []).map((rt) => rt.plain_text || "").join("");
 }
 
+function plainTextToHtml(text) {
+  if (!text) return "";
+  return text
+    .split(/\n\s*\n/)
+    .map((para) => para.trim())
+    .filter(Boolean)
+    .map((para) => `<p>${escapeHtml(para).replace(/\n/g, "<br />")}</p>`)
+    .join("");
+}
+
 function richTextToHtml(richText) {
   if (!richText || !richText.length) return "";
   return richText
@@ -203,6 +213,7 @@ async function getPublishedPosts() {
     const category = props.category?.select?.name || null;
     const fecha = props.date?.date?.start || null;
     const extracto = plainTextFrom(props.excerpt?.rich_text);
+    const contentProp = plainTextFrom(props.content?.rich_text);
     const coverFile = props.cover?.files?.[0];
     const imagen_destacada = coverFile?.file?.url || coverFile?.external?.url || null;
 
@@ -212,8 +223,14 @@ async function getPublishedPosts() {
     while (usedSlugs.has(slug)) slug = `${slugBase}-${i++}`;
     usedSlugs.add(slug);
 
-    const blocks = await fetchBlockChildren(page.id);
-    const contenido_html = blocksToHtml(blocks);
+    // El cuerpo del post puede vivir en la propiedad "content" (texto plano,
+    // típico de posts importados de LinkedIn) o como bloques de la página
+    // en Notion. Se usa lo que haya; si ambos existen, prevalece "content".
+    let contenido_html = plainTextToHtml(contentProp);
+    if (!contenido_html) {
+      const blocks = await fetchBlockChildren(page.id);
+      contenido_html = blocksToHtml(blocks);
+    }
 
     posts.push({
       id: page.id,
