@@ -1,18 +1,45 @@
-// Genera public/blog/<slug>.html para cada post en public/data/posts.json
+// Genera public/blog/<slug>.html y public/data/posts.json a partir de los
+// posts "Published" de una base de datos de Notion.
+//
+// Requiere las variables de entorno NOTION_TOKEN y NOTION_DATABASE_ID
+// (en local: archivo .env.local; en Vercel: Project Settings > Environment Variables).
+//
 // Uso: node scripts/generate-blog-posts.js
 const fs = require("fs");
 const path = require("path");
 
 const ROOT = path.join(__dirname, "..");
-const POSTS_PATH = path.join(ROOT, "public", "data", "posts.json");
 const OUT_DIR = path.join(ROOT, "public", "blog");
+const POSTS_JSON_PATH = path.join(ROOT, "public", "data", "posts.json");
 const SITE_URL = "https://kairospro.online";
+const NOTION_API = "https://api.notion.com/v1";
+const NOTION_VERSION = "2022-06-28";
 
-const posts = JSON.parse(fs.readFileSync(POSTS_PATH, "utf-8"));
+function loadEnvLocal() {
+  const envPath = path.join(ROOT, ".env.local");
+  if (!fs.existsSync(envPath)) return;
+  const content = fs.readFileSync(envPath, "utf-8");
+  content.split("\n").forEach((line) => {
+    const match = line.match(/^\s*([\w.-]+)\s*=\s*(.*)\s*$/);
+    if (!match) return;
+    const key = match[1];
+    let value = match[2] || "";
+    value = value.replace(/^['"]|['"]$/g, "");
+    if (!(key in process.env)) process.env[key] = value;
+  });
+}
 
-function formatDate(iso) {
-  const d = new Date(iso + "T00:00:00");
-  return d.toLocaleDateString("es-CO", { day: "numeric", month: "long", year: "numeric" });
+loadEnvLocal();
+
+const NOTION_TOKEN = process.env.NOTION_TOKEN;
+const DATABASE_ID = process.env.NOTION_DATABASE_ID;
+
+function notionHeaders() {
+  return {
+    Authorization: `Bearer ${NOTION_TOKEN}`,
+    "Notion-Version": NOTION_VERSION,
+    "Content-Type": "application/json",
+  };
 }
 
 function escapeHtml(str) {
@@ -23,17 +50,199 @@ function escapeHtml(str) {
     .replace(/"/g, "&quot;");
 }
 
+function slugify(text) {
+  return (
+    text
+      .normalize("NFD")
+      .replace(/[̀-ͯ]/g, "")
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9\s-]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-")
+      .replace(/^-|-$/g, "") || "post"
+  );
+}
+
+function formatDate(iso) {
+  if (!iso) return "";
+  const d = new Date(iso + "T00:00:00");
+  return d.toLocaleDateString("es-CO", { day: "numeric", month: "long", year: "numeric" });
+}
+
+function plainTextFrom(richText) {
+  return (richText || []).map((rt) => rt.plain_text || "").join("");
+}
+
+function richTextToHtml(richText) {
+  if (!richText || !richText.length) return "";
+  return richText
+    .map((rt) => {
+      let text = escapeHtml(rt.plain_text || "");
+      const ann = rt.annotations || {};
+      if (ann.code) text = `<code>${text}</code>`;
+      if (ann.bold) text = `<strong>${text}</strong>`;
+      if (ann.italic) text = `<em>${text}</em>`;
+      if (rt.href) text = `<a href="${rt.href}" target="_blank" rel="noopener">${text}</a>`;
+      return text;
+    })
+    .join("");
+}
+
+function blocksToHtml(blocks) {
+  let html = "";
+  let listBuffer = [];
+  let listType = null;
+
+  function flushList() {
+    if (listBuffer.length) {
+      const tag = listType === "numbered_list_item" ? "ol" : "ul";
+      html += `<${tag}>${listBuffer.join("")}</${tag}>`;
+      listBuffer = [];
+      listType = null;
+    }
+  }
+
+  for (const block of blocks) {
+    const type = block.type;
+
+    if (type === "bulleted_list_item" || type === "numbered_list_item") {
+      if (listType && listType !== type) flushList();
+      listType = type;
+      listBuffer.push(`<li>${richTextToHtml(block[type].rich_text)}</li>`);
+      continue;
+    }
+
+    flushList();
+
+    switch (type) {
+      case "paragraph":
+        if (block.paragraph.rich_text.length) html += `<p>${richTextToHtml(block.paragraph.rich_text)}</p>`;
+        break;
+      case "heading_1":
+      case "heading_2":
+        html += `<h2>${richTextToHtml(block[type].rich_text)}</h2>`;
+        break;
+      case "heading_3":
+        html += `<h3>${richTextToHtml(block.heading_3.rich_text)}</h3>`;
+        break;
+      case "quote":
+        html += `<blockquote>${richTextToHtml(block.quote.rich_text)}</blockquote>`;
+        break;
+      case "image": {
+        const url = block.image?.file?.url || block.image?.external?.url;
+        if (url) html += `<img src="${escapeHtml(url)}" alt="" loading="lazy" />`;
+        break;
+      }
+      case "divider":
+        html += "<hr />";
+        break;
+      default:
+        break;
+    }
+  }
+
+  flushList();
+  return html;
+}
+
+async function fetchBlockChildren(blockId) {
+  const results = [];
+  let cursor;
+
+  do {
+    const url = new URL(`${NOTION_API}/blocks/${blockId}/children`);
+    url.searchParams.set("page_size", "100");
+    if (cursor) url.searchParams.set("start_cursor", cursor);
+
+    const res = await fetch(url.toString(), { headers: notionHeaders() });
+    if (!res.ok) throw new Error(`Notion blocks fetch failed: ${res.status}`);
+    const data = await res.json();
+    results.push(...data.results);
+    cursor = data.has_more ? data.next_cursor : undefined;
+  } while (cursor);
+
+  return results;
+}
+
+async function queryPublishedPages() {
+  const results = [];
+  let cursor;
+
+  do {
+    const res = await fetch(`${NOTION_API}/databases/${DATABASE_ID}/query`, {
+      method: "POST",
+      headers: notionHeaders(),
+      body: JSON.stringify({
+        filter: { property: "published", status: { equals: "Published" } },
+        sorts: [{ property: "date", direction: "descending" }],
+        start_cursor: cursor,
+        page_size: 100,
+      }),
+    });
+    if (!res.ok) {
+      const errBody = await res.text();
+      throw new Error(`Notion database query failed: ${res.status} ${errBody}`);
+    }
+    const data = await res.json();
+    results.push(...data.results);
+    cursor = data.has_more ? data.next_cursor : undefined;
+  } while (cursor);
+
+  return results;
+}
+
+async function getPublishedPosts() {
+  const pages = await queryPublishedPages();
+  const usedSlugs = new Set();
+  const posts = [];
+
+  for (const page of pages) {
+    const props = page.properties || {};
+    const titulo = plainTextFrom(props.Nombre?.title) || "Sin título";
+    const category = props.category?.select?.name || null;
+    const fecha = props.date?.date?.start || null;
+    const extracto = plainTextFrom(props.excerpt?.rich_text);
+    const coverFile = props.cover?.files?.[0];
+    const imagen_destacada = coverFile?.file?.url || coverFile?.external?.url || null;
+
+    let slugBase = slugify(titulo);
+    let slug = slugBase;
+    let i = 2;
+    while (usedSlugs.has(slug)) slug = `${slugBase}-${i++}`;
+    usedSlugs.add(slug);
+
+    const blocks = await fetchBlockChildren(page.id);
+    const contenido_html = blocksToHtml(blocks);
+
+    posts.push({
+      id: page.id,
+      titulo,
+      slug,
+      fecha,
+      extracto,
+      meta_descripcion: extracto,
+      tags: category ? [category] : [],
+      imagen_destacada,
+      contenido_html,
+    });
+  }
+
+  return posts.sort((a, b) => new Date(b.fecha || 0) - new Date(a.fecha || 0));
+}
+
 function template(post) {
   const url = `${SITE_URL}/blog/${post.slug}.html`;
-  const image = post.imagen_destacada.startsWith("http")
+  const image = post.imagen_destacada
     ? post.imagen_destacada
-    : `${SITE_URL}${post.imagen_destacada}`;
-  const tagsHtml = post.tags
-    .map((t) => `<span class="blog-post-tag">${escapeHtml(t)}</span>`)
-    .join("");
+    : `${SITE_URL}/logo-kairos.png`;
+  const tagsHtml = post.tags.map((t) => `<span class="blog-post-tag">${escapeHtml(t)}</span>`).join("");
   const shareText = encodeURIComponent(post.titulo);
   const linkedinShare = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
   const twitterShare = `https://twitter.com/intent/tweet?text=${shareText}&url=${encodeURIComponent(url)}`;
+  const heroImage = post.imagen_destacada
+    ? `<img class="blog-post-cover" src="${escapeHtml(post.imagen_destacada)}" alt="${escapeHtml(post.titulo)}" />`
+    : "";
 
   return `<!DOCTYPE html>
 <html lang="es">
@@ -50,7 +259,7 @@ function template(post) {
   <meta property="og:url" content="${url}" />
   <meta property="og:image" content="${image}" />
   <meta property="og:locale" content="es_CO" />
-  <meta property="article:published_time" content="${post.fecha}" />
+  <meta property="article:published_time" content="${post.fecha || ""}" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${escapeHtml(post.titulo)}" />
@@ -74,7 +283,7 @@ function template(post) {
     "@type": "BlogPosting",
     "headline": "${escapeHtml(post.titulo)}",
     "description": "${escapeHtml(post.meta_descripcion)}",
-    "datePublished": "${post.fecha}",
+    "datePublished": "${post.fecha || ""}",
     "author": { "@type": "Person", "name": "Juan Camilo Alvarado" },
     "image": "${image}",
     "mainEntityOfPage": "${url}"
@@ -102,8 +311,10 @@ function template(post) {
       <div class="blog-post-meta">
         <span>Juan Camilo Alvarado</span>
         <span>·</span>
-        <time datetime="${post.fecha}">${formatDate(post.fecha)}</time>
+        <time datetime="${post.fecha || ""}">${formatDate(post.fecha)}</time>
       </div>
+
+      ${heroImage}
 
       <div class="blog-post-content">
         ${post.contenido_html}
@@ -154,10 +365,33 @@ function template(post) {
 `;
 }
 
-if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR, { recursive: true });
+async function main() {
+  if (!NOTION_TOKEN || !DATABASE_ID) {
+    console.error(
+      "Faltan NOTION_TOKEN y/o NOTION_DATABASE_ID (revisa .env.local o las variables de entorno de Vercel). Se omite la generación."
+    );
+    process.exit(1);
+  }
 
-posts.forEach((post) => {
-  const outPath = path.join(OUT_DIR, `${post.slug}.html`);
-  fs.writeFileSync(outPath, template(post), "utf-8");
-  console.log(`Generado: public/blog/${post.slug}.html`);
+  console.log("Consultando posts publicados en Notion...");
+  const posts = await getPublishedPosts();
+  console.log(`Encontrados ${posts.length} posts publicados.`);
+
+  if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR, { recursive: true });
+
+  posts.forEach((post) => {
+    const outPath = path.join(OUT_DIR, `${post.slug}.html`);
+    fs.writeFileSync(outPath, template(post), "utf-8");
+    console.log(`Generado: public/blog/${post.slug}.html`);
+  });
+
+  const listingData = posts.map(({ contenido_html, ...rest }) => rest);
+  fs.mkdirSync(path.dirname(POSTS_JSON_PATH), { recursive: true });
+  fs.writeFileSync(POSTS_JSON_PATH, JSON.stringify(listingData, null, 2), "utf-8");
+  console.log("Actualizado: public/data/posts.json");
+}
+
+main().catch((err) => {
+  console.error("Error generando el blog desde Notion:", err);
+  process.exit(1);
 });

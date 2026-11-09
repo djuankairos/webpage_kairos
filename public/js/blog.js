@@ -2,6 +2,7 @@
   "use strict";
 
   function formatDate(iso) {
+    if (!iso) return "";
     var d = new Date(iso + "T00:00:00");
     return d.toLocaleDateString("es-CO", { day: "numeric", month: "long", year: "numeric" });
   }
@@ -15,10 +16,17 @@
   }
 
   function fetchPosts() {
-    return fetch("/data/posts.json")
+    return fetch("/api/posts")
       .then(function (res) {
-        if (!res.ok) throw new Error("No se pudieron cargar los posts");
+        if (!res.ok) throw new Error("No se pudieron cargar los posts desde Notion");
         return res.json();
+      })
+      .catch(function () {
+        // Fallback: el listado generado en el último deploy
+        return fetch("/data/posts.json").then(function (res) {
+          if (!res.ok) throw new Error("No se pudieron cargar los posts");
+          return res.json();
+        });
       })
       .catch(function (err) {
         console.error(err);
@@ -35,13 +43,19 @@
     var recent = sorted.slice(0, 3);
     container.innerHTML = recent
       .map(function (post) {
+        var image = post.imagen_destacada
+          ? '<img class="blog-card-image" src="' + escapeHtml(post.imagen_destacada) + '" alt="" loading="lazy" />'
+          : "";
         return (
           '<a class="blog-card" href="/blog/' + escapeHtml(post.slug) + '.html">' +
+          image +
+          '<div class="blog-card-body">' +
           '<span class="blog-card-tag">' + escapeHtml((post.tags && post.tags[0]) || "Blog") + "</span>" +
           '<span class="blog-card-date">' + formatDate(post.fecha) + "</span>" +
           "<h3>" + escapeHtml(post.titulo) + "</h3>" +
           '<p class="blog-card-excerpt">' + escapeHtml(post.extracto) + "</p>" +
           '<span class="blog-card-readmore">Leer más →</span>' +
+          "</div>" +
           "</a>"
         );
       })
