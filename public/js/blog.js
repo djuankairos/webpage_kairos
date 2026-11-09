@@ -40,8 +40,7 @@
     var sorted = posts.slice().sort(function (a, b) {
       return new Date(b.fecha) - new Date(a.fecha);
     });
-    var recent = sorted.slice(0, 3);
-    container.innerHTML = recent
+    container.innerHTML = sorted
       .map(function (post) {
         var image = post.imagen_destacada
           ? '<img class="blog-card-image" src="' + escapeHtml(post.imagen_destacada) + '" alt="" loading="lazy" />'
