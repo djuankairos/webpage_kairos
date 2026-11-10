@@ -9,7 +9,7 @@
     "tags": [
       "Aprendizaje"
     ],
-    "imagen_destacada": null
+    "imagen_destacada": "https://images.unsplash.com/photo-1603492501465-2d1bf970b974?auto=format&fit=crop&w=1200&q=80"
   },
   {
     "id": "413dbb38-fca4-81de-9ebe-d1a02be28257",
@@ -21,7 +21,7 @@
     "tags": [
       "Aprendizaje"
     ],
-    "imagen_destacada": null
+    "imagen_destacada": "https://images.unsplash.com/photo-1608099269227-82de5da1e4a8?auto=format&fit=crop&w=1200&q=80"
   },
   {
     "id": "413dbb38-fca4-81bc-b951-d2251ac507bc",
@@ -33,7 +33,7 @@
     "tags": [
       "Liderazgo"
     ],
-    "imagen_destacada": null
+    "imagen_destacada": "https://images.unsplash.com/photo-1752159400890-d906038f1b35?auto=format&fit=crop&w=1200&q=80"
   },
   {
     "id": "413dbb38-fca4-812c-8a5f-f3489f2fc4a1",
@@ -45,7 +45,7 @@
     "tags": [
       "Liderazgo"
     ],
-    "imagen_destacada": null
+    "imagen_destacada": "https://images.unsplash.com/photo-1622675363311-3e1904dc1885?auto=format&fit=crop&w=1200&q=80"
   },
   {
     "id": "413dbb38-fca4-816e-b35a-e484c6138534",
@@ -57,7 +57,7 @@
     "tags": [
       "Aprendizaje"
     ],
-    "imagen_destacada": null
+    "imagen_destacada": "https://images.unsplash.com/photo-1502126324834-38f8e02d7160?auto=format&fit=crop&w=1200&q=80"
   },
   {
     "id": "413dbb38-fca4-81ee-ad62-d4f9b81bc956",
@@ -67,7 +67,7 @@
     "extracto": "Una exención de IVA no siempre se traduce en precios más bajos para el consumidor: muchas veces el beneficio fiscal se diluye en los márgenes de la cadena de suministro.",
     "meta_descripcion": "Una exención de IVA no siempre se traduce en precios más bajos para el consumidor: muchas veces el beneficio fiscal se diluye en los márgenes de la cadena de suministro.",
     "tags": [],
-    "imagen_destacada": null
+    "imagen_destacada": "https://images.unsplash.com/photo-1586486855514-8c633cc6fd38?auto=format&fit=crop&w=1200&q=80"
   },
   {
     "id": "413dbb38-fca4-8105-a382-c83aff693eae",
@@ -79,7 +79,7 @@
     "tags": [
       "Liderazgo"
     ],
-    "imagen_destacada": null
+    "imagen_destacada": "https://images.unsplash.com/photo-1758520144437-f068ecaf0d83?auto=format&fit=crop&w=1200&q=80"
   },
   {
     "id": "413dbb38-fca4-8113-8c80-ee49ea20dc80",
@@ -91,6 +91,6 @@
     "tags": [
       "Liderazgo"
     ],
-    "imagen_destacada": null
+    "imagen_destacada": "https://images.unsplash.com/photo-1758691736548-073bc97cdff4?auto=format&fit=crop&w=1200&q=80"
   }
 ]
